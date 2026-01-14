@@ -1,6 +1,6 @@
 ## Tools i use
 
-- [Tuis](#tuis)
+- [Tui](#tui)
 
 - [Text Editors](#text-editors)
 
@@ -9,7 +9,7 @@
 - [System](#system)
 
 
-## Tuis
+## Tui
 - [btop](https://github.com/aristocratos/btop) - system monitor
 
 - [dua](https://github.com/Byron/dua-cli) - disk usage analizer
