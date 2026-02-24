@@ -1,0 +1,25 @@
+function chat() {
+  if [ -z "$1" ]; then
+    echo "Usage: chat \"your message here\""
+    return 1
+  fi
+
+  # Start Ollama silently in background
+  ollama serve &> /dev/null & disown
+  echo "🔄 Starting Ollama..."
+
+  # Wait for server to respond
+  until curl -s http://localhost:11434/api/tags &>/dev/null; do
+    sleep 0.5
+  done
+  echo "✅ Ollama ready!"
+
+  # Get model output only, suppress everything else
+  RESPONSE=$(OLLAMA_ORIGINS=http://localhost:11434 ollama run gemma3:4b "$1" 2>/dev/null)
+
+  # Show model response only
+  echo -e "\n🧠 $RESPONSE"
+
+  # Kill Ollama
+  pkill -f "ollama serve" &>/dev/null
+}

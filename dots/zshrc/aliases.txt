@@ -1,0 +1,49 @@
+alias ls='lsd'
+alias ll='lsd -l'
+alias la='lsd -la'
+alias lt='lsd --tree'
+alias cat='bat'
+alias batn='bat -n'
+alias batp='bat -p'      # No pager
+alias b='bat'            # Short and sweet
+alias find='fd'
+alias f='fd'
+alias ff='fd -e'
+alias ffe='fd -e $1'     # usage: `ffe js`
+alias fdall='fd -H -I'   # show *everything*, including hidden/gitignored
+alias nano='micro'
+alias files='yazi'
+alias zed='zeditor'
+alias code='zeditor'
+alias sudo='sudo-rs'
+alias grep='rg'
+alias hx='helix'
+alias update='paru -Syu && flatpak update'
+alias u='update'
+alias m='zellij'
+alias music='termusic'
+alias paruf='paru -Slq | fzf --multi --preview "paru -Si {1}" --preview-window=down:75% | xargs -ro paru -S'
+alias bc='qalc'
+alias hamachi_start='systemctl start logmein-hamachi'
+alias weather='curl wttr.in'
+
+
+
+off() {
+  echo "Are you sure you want to turn off the system? (y/n)"
+  read -r answer
+  if [[ "$answer" == [Yy] ]]; then
+    systemctl poweroff
+  else
+    echo "Turnoff canceled."
+  fi
+}
+
+
+
+
+
+
+
+
+alias ollama-cpu='ROCR_VISIBLE_DEVICES=-1 ollama serve'

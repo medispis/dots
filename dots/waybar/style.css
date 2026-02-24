@@ -1,0 +1,295 @@
+/* =============================================================================
+ *
+ * Waybar configuration - Catppuccin Frappé Theme
+ *
+ * =========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Catppuccin Frappé Color Palette
+ * -------------------------------------------------------------------------- */
+
+@define-color rosewater #f2d5cf;
+@define-color flamingo #eebebe;
+@define-color pink #f4b8e4;
+@define-color mauve #ca9ee6;
+@define-color red #e78284;
+@define-color maroon #ea999c;
+@define-color peach #ef9f76;
+@define-color yellow #e5c890;
+@define-color green #a6d189;
+@define-color teal #81c8be;
+@define-color sky #99d1db;
+@define-color sapphire #85c1dc;
+@define-color blue #8caaee;
+@define-color lavender #babbf1;
+@define-color text #c6d0f5;
+@define-color subtext1 #b5bfe2;
+@define-color subtext0 #a5adce;
+@define-color overlay2 #949cbb;
+@define-color overlay1 #838ba7;
+@define-color overlay0 #737994;
+@define-color surface2 #626880;
+@define-color surface1 #51576d;
+@define-color surface0 #414559;
+@define-color base #303446;
+@define-color mantle #292c3c;
+@define-color crust #232634;
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+@keyframes blink-warning {
+    70% {
+        color: @crust;
+    }
+
+    to {
+        color: @crust;
+        background-color: @yellow;
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+        color: @crust;
+    }
+
+    to {
+        color: @crust;
+        background-color: @red;
+    }
+}
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    font-family: "FiraCodeNF-Reg", FiraCode, monospace;
+}
+
+/* The whole bar - with connected background */
+#waybar {
+    background: rgba(48, 52, 70, 98);
+    color: @text;
+    font-size: 13px;
+    margin: 2px;
+    border-radius: 0;
+}
+
+/* Each module */
+#battery,
+#clock,
+#cpu,
+#language,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray,
+#window,
+#workspaces {
+    padding-left: 10px;
+    padding-right: 10px;
+    background: transparent;
+    margin: 0;
+    border-radius: 0;
+}
+
+/* -----------------------------------------------------------------------------
+ * Workspaces
+ * -------------------------------------------------------------------------- */
+
+#workspaces {
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: @text;
+    background: transparent;
+    border-radius: 0;
+    transition: all 0.3s ease;
+}
+
+#workspaces button:hover {
+    background: transparent;
+    color: @blue;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+    color: @base;
+    background: @blue;
+    font-weight: bold;
+}
+
+#workspaces button.urgent {
+    color: @crust;
+    background: @red;
+    animation-name: blink-critical;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+/* -----------------------------------------------------------------------------
+ * Window title
+ * -------------------------------------------------------------------------- */
+
+#window {
+    color: @text;
+    font-weight: bold;
+}
+
+/* -----------------------------------------------------------------------------
+ * Clock
+ * -------------------------------------------------------------------------- */
+
+#clock {
+    color: @text;
+    font-weight: bold;
+}
+
+#clock.date {
+    color: @text;
+}
+
+/* -----------------------------------------------------------------------------
+ * Battery
+ * -------------------------------------------------------------------------- */
+
+#battery {
+    color: @text;
+}
+
+#battery.warning {
+    color: @yellow;
+}
+
+#battery.critical {
+    color: @red;
+}
+
+#battery.warning.discharging {
+    animation-name: blink-warning;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* -----------------------------------------------------------------------------
+ * CPU
+ * -------------------------------------------------------------------------- */
+
+#cpu {
+    color: @text;
+}
+
+#cpu.warning {
+    color: @yellow;
+}
+
+#cpu.critical {
+    color: @red;
+}
+
+/* -----------------------------------------------------------------------------
+ * Memory
+ * -------------------------------------------------------------------------- */
+
+#memory {
+    color: @text;
+}
+
+#memory.warning {
+    color: @yellow;
+}
+
+#memory.critical {
+    color: @red;
+    animation-name: blink-critical;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* -----------------------------------------------------------------------------
+ * Network
+ * -------------------------------------------------------------------------- */
+
+#network {
+    color: @text;
+}
+
+#network.disconnected {
+    color: @yellow;
+}
+
+/* -----------------------------------------------------------------------------
+ * PulseAudio
+ * -------------------------------------------------------------------------- */
+
+#pulseaudio {
+    color: @text;
+}
+
+#pulseaudio.muted {
+    color: @overlay0;
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Temperature
+ * -------------------------------------------------------------------------- */
+
+#temperature {
+    color: @text;
+}
+
+#temperature.critical {
+    color: @red;
+}
+
+/* -----------------------------------------------------------------------------
+ * Tray
+ * -------------------------------------------------------------------------- */
+
+#tray {
+    background: transparent;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @red;
+}
+
+/* -----------------------------------------------------------------------------
+ * Mode
+ * -------------------------------------------------------------------------- */
+
+#mode {
+    background: @surface1;
+    color: @text;
+    font-weight: bold;
+}

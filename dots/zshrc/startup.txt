@@ -1,0 +1,7 @@
+# Run fastfetch at terminal start
+#fastfetch
+if [[ "$TERM_PROGRAM" == "zed" ]]; then
+   # or "clean" or whatever minimal theme you like
+else
+  fastfetch  # or your usual setup
+fi
