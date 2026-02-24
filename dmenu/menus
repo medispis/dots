@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+rofi_theme="sidebar"
+prompt="Menus:"
+
+selection="$(
+  fd . ~/dmenu --max-depth 1 --type x --exclude menus \
+    | xargs file --mime-type \
+    | grep 'text/' \
+    | cut -d: -f1 \
+    | sed "s|^$HOME/dmenu/||" \
+    | sort \
+    | rofi -dmenu -i -p "$prompt" -theme "$rofi_theme"
+)"
+
+[ -z "$selection" ] && exit 0
+
+exec ~/dmenu/"$selection"

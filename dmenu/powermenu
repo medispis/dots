@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+choice="$(printf "kill\nreboot\nshutdown\nsuspend\nlogout" | rofi -dmenu -i -p "Action" -theme sidebar)"
+
+case "$choice" in
+    kill)
+        ps -u "$USER" -o pid,comm,%cpu,%mem \
+            | rofi -dmenu -theme sidebar -i -p "Kill:" \
+            | awk '{print $1}' \
+            | xargs -r kill
+        ;;
+    reboot)
+        systemctl reboot -i
+        ;;
+    shutdown)
+        shutdown now
+        ;;
+    suspend)
+    	systemctl suspend
+    	;;
+    logout)
+    	loginctl terminate-user $USER
+    	;;
+    *)
+        exit 1
+        ;;
+esac
