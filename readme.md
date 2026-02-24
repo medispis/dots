@@ -26,7 +26,7 @@
 
 
 
-## Text Editors
+## Text-Editors
 - [zed](https://github.com/zed-industries/zed) - gui text editor
 
 - [micro](https://github.com/zyedidia/micro) - terminal text editor
