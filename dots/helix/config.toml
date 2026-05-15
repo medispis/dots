@@ -25,3 +25,16 @@ C-g = [
     ":redraw", 
     ":reload-all"
 ]
+up = "no_op"
+down = "no_op"
+left = "no_op"
+right = "no_op"
+
+[keys.insert]
+up = "no_op"
+down = "no_op"
+left = "no_op"
+right = "no_op"
+
+[editor.statusline]
+center = ["total-line-numbers"]
